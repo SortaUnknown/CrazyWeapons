@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrazyWeaponsPlugin", "CrazyWeaponsPlugin\CrazyWeaponsPlugin.csproj", "{DEF40C09-1F43-44EF-8691-850C60C78724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEF40C09-1F43-44EF-8691-850C60C78724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF40C09-1F43-44EF-8691-850C60C78724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF40C09-1F43-44EF-8691-850C60C78724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF40C09-1F43-44EF-8691-850C60C78724}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CDE22D8-F9E3-4268-B0D6-1D45E33A9D66}
+	EndGlobalSection
+EndGlobal
