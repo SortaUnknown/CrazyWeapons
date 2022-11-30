@@ -1,5 +1,3 @@
-Adds a series of absurdly overpowered weapons to the game to mess around with.
-
 Press 1 to summon a red spear that will instantly kill any creature it hits
 
 Press 2 to summon a green spear that will fully heal any creature it hits, and revive
