@@ -4,7 +4,7 @@ using BepInEx;
 
 namespace CrazyWeaponsPlugin
 {
-    [BepInPlugin("HelloThere.MoreSpears", "Crazy Weapons", "1.1")]
+    [BepInPlugin("HelloThere.CrazyWeapons", "Crazy Weapons", "1.1")]
     public class MoreSpearsMod : BaseUnityPlugin
     {
         public void OnEnable()
