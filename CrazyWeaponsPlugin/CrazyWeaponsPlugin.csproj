@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net35</TargetFramework>
-    <Version>1.1</Version>
+    <TargetFramework>net48</TargetFramework>
+    <Version>1.2</Version>
     <Authors>HelloThere</Authors>
     <Copyright />
   </PropertyGroup>
