@@ -24,6 +24,8 @@ namespace CrazyWeaponsPlugin
         private static void RawUpdatePatch(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
             orig.Invoke(self, dt);
+            //throw new System.Exception("Kill everything. Kill everyone. Kill everything thats isnt DEAD");
+            //Debug.Log("Update works");
 
             if (Input.GetKeyDown("1"))
             {
@@ -50,10 +52,7 @@ namespace CrazyWeaponsPlugin
             {
                 EntityID newID = self.GetNewID();
                 newID.number = 103;
-                if (storedRock != null)
-                {
-                    storedRock.realizedObject.Destroy();
-                }
+                storedRock?.realizedObject.Destroy();
                 storedRock = new AbstractPhysicalObject(self.world, AbstractPhysicalObject.AbstractObjectType.Rock, null, self.Players[0].pos, newID);
                 storedRock.RealizeInRoom();
             }
