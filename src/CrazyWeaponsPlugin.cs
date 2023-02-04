@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using BepInEx;
 
 namespace CrazyWeaponsPlugin
 {
     [BepInPlugin("HelloThere.CrazyWeapons", "Crazy Weapons", "1.1")]
-    public class MoreSpearsMod : BaseUnityPlugin
+    public class CrazyWeaponsMod : BaseUnityPlugin
     {
         public void OnEnable()
         {
@@ -19,6 +18,7 @@ namespace CrazyWeaponsPlugin
         }
 
         public static AbstractPhysicalObject storedRock;
+
         public static Creature storedCreature;
 
         private static void RawUpdatePatch(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)

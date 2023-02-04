@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrazyWeaponsPlugin", "CrazyWeaponsPlugin\CrazyWeaponsPlugin.csproj", "{DEF40C09-1F43-44EF-8691-850C60C78724}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrazyWeaponsPlugin", "src\CrazyWeaponsPlugin.csproj", "{DEF40C09-1F43-44EF-8691-850C60C78724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

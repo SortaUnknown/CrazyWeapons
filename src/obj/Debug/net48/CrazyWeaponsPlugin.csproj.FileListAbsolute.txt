@@ -1,0 +1,5 @@
+/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/obj/Debug/net48/CrazyWeaponsPlugin.csproj.AssemblyReference.cache
+/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/obj/Debug/net48/CrazyWeaponsPlugin.GeneratedMSBuildEditorConfig.editorconfig
+/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/obj/Debug/net48/CrazyWeaponsPlugin.AssemblyInfoInputs.cache
+/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/obj/Debug/net48/CrazyWeaponsPlugin.AssemblyInfo.cs
+/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/obj/Debug/net48/CrazyWeaponsPlugin.csproj.CoreCompileInputs.cache
