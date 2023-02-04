@@ -13,8 +13,8 @@ namespace CrazyWeaponsPlugin
             On.Rock.HitSomething += RockHitPatch;
             On.FlareBomb.HitWall += HitWallPatch;
             On.Spear.ApplyPalette += SpearApplyPalettePatch;
-            On.Rock.ApplyPalette += RockApplyPalettePatch;
-            On.FlareBomb.ApplyPalette += FlareApplyPalettePatch;
+            //On.Rock.ApplyPalette += RockApplyPalettePatch;
+            //On.FlareBomb.ApplyPalette += FlareApplyPalettePatch;
         }
 
         public static AbstractPhysicalObject storedRock;
@@ -24,15 +24,17 @@ namespace CrazyWeaponsPlugin
         private static void RawUpdatePatch(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
         {
             orig.Invoke(self, dt);
-            //throw new System.Exception("Kill everything. Kill everyone. Kill everything thats isnt DEAD");
-            //Debug.Log("Update works");
 
             if (Input.GetKeyDown("1"))
             {
+                Debug.Log("Making a spear");
                 EntityID newID = self.GetNewID();
                 newID.number = 100;
+                Debug.Log("Spawning a spear");
                 AbstractSpear abstractSpear = new AbstractSpear(self.world, null, self.Players[0].pos, newID, false);
+                Debug.Log("Spear is live");
                 abstractSpear.RealizeInRoom();
+                Debug.Log("Spear is live part 2 the reckoning");
             }
             else if (Input.GetKeyDown("2"))
             {
@@ -117,6 +119,7 @@ namespace CrazyWeaponsPlugin
 
         private static void SpearApplyPalettePatch(On.Spear.orig_ApplyPalette orig, Spear self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
         {
+            Debug.Log("ApplyPaletteStart");
             if (IsKill(self))
             {
                 self.color = Color.red;
@@ -131,6 +134,7 @@ namespace CrazyWeaponsPlugin
             {
                 orig.Invoke(self, sLeaser, rCam, palette);
             }
+            Debug.Log("ApplyPaletteEnd");
         }
 
         private static void RockApplyPalettePatch(On.Rock.orig_ApplyPalette orig, Rock self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
@@ -168,6 +172,7 @@ namespace CrazyWeaponsPlugin
 
         public static bool IsKill(Spear spear)
         {
+            Debug.Log("IsKillStart");
             return spear.abstractPhysicalObject.ID.number == 100;
         }
 
