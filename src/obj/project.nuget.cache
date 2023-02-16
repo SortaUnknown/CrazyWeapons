@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "35XM+PShvenVbN10sxZdNoATSfMDmywNhayUGc4jnpM4K8Qe6KJbscDgVuBdF4SCo0bLWeigg/YRrC961ZVfeQ==",
+  "success": true,
+  "projectFilePath": "/media/ht/Samsung_T5/DebStuff/Coding/CrazyWeaponsPlugin/src/CrazyWeaponsPlugin.csproj",
+  "expectedPackageFiles": [
+    "/home/ht/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/home/ht/.nuget/packages/microsoft.netframework.referenceassemblies.net48/1.0.3/microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
