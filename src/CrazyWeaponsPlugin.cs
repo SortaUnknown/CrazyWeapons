@@ -17,7 +17,7 @@ namespace CrazyWeaponsPlugin
             On.RainWorldGame.RawUpdate += RawUpdatePatch;
             On.Spear.HitSomething += SpearHitPatch;
             On.Rock.HitSomething += RockHitPatch;
-            On.FlareBomb.HitWall += HitWallPatch;
+            On.FlareBomb.HitSomething += GrenadeHitPatch;
             On.Spear.ApplyPalette += SpearApplyPalettePatch;
             On.Rock.ApplyPalette += RockApplyPalettePatch;
             On.FlareBomb.ApplyPalette += FlareApplyPalettePatch;
@@ -111,9 +111,9 @@ namespace CrazyWeaponsPlugin
             return res;
         }
 
-        private static void HitWallPatch(On.FlareBomb.orig_HitWall orig, FlareBomb self)
+        private static bool GrenadeHitPatch(On.FlareBomb.orig_HitSomething orig, FlareBomb self, SharedPhysics.CollisionResult result, bool eu)
         {
-            orig.Invoke(self);
+            bool res = orig.Invoke(self, result, eu);
             if (IsGrenade(self))
             {
                 foreach (AbstractCreature abstractCreature in self.room.abstractRoom.creatures)
@@ -121,6 +121,7 @@ namespace CrazyWeaponsPlugin
                     if (!(abstractCreature.realizedCreature is Player)) { abstractCreature.realizedCreature.Die(); }
                 }
             }
+            return res;
         }
 
         private static void SpearApplyPalettePatch(On.Spear.orig_ApplyPalette orig, Spear self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
