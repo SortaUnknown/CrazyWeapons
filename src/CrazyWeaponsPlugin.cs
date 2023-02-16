@@ -1,24 +1,29 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using BepInEx;
+using System.Security.Permissions;
+
+#pragma warning disable CS0618 //Type or member is obsolete
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+#pragma warning restore CS0618 //Type or member is obsolete
 
 namespace CrazyWeaponsPlugin
 {
-    [BepInPlugin("HelloThere.MoreSpears", "Crazy Weapons", "1.1")]
-    public class MoreSpearsMod : BaseUnityPlugin
+    [BepInPlugin("HelloThere.CrazyWeapons", "Crazy Weapons", "1.1")]
+    public class CrazyWeaponsMod : BaseUnityPlugin
     {
         public void OnEnable()
         {
             On.RainWorldGame.RawUpdate += RawUpdatePatch;
             On.Spear.HitSomething += SpearHitPatch;
             On.Rock.HitSomething += RockHitPatch;
-            On.FlareBomb.HitWall += HitWallPatch;
+            On.FlareBomb.HitSomething += GrenadeHitPatch;
             On.Spear.ApplyPalette += SpearApplyPalettePatch;
             On.Rock.ApplyPalette += RockApplyPalettePatch;
             On.FlareBomb.ApplyPalette += FlareApplyPalettePatch;
         }
 
         public static AbstractPhysicalObject storedRock;
+
         public static Creature storedCreature;
 
         private static void RawUpdatePatch(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
@@ -27,10 +32,14 @@ namespace CrazyWeaponsPlugin
 
             if (Input.GetKeyDown("1"))
             {
+                Debug.Log("Making a spear");
                 EntityID newID = self.GetNewID();
                 newID.number = 100;
+                Debug.Log("Spawning a spear");
                 AbstractSpear abstractSpear = new AbstractSpear(self.world, null, self.Players[0].pos, newID, false);
+                Debug.Log("Spear is live");
                 abstractSpear.RealizeInRoom();
+                Debug.Log("Spear is live part 2 the reckoning");
             }
             else if (Input.GetKeyDown("2"))
             {
@@ -50,10 +59,7 @@ namespace CrazyWeaponsPlugin
             {
                 EntityID newID = self.GetNewID();
                 newID.number = 103;
-                if (storedRock != null)
-                {
-                    storedRock.realizedObject.Destroy();
-                }
+                storedRock?.realizedObject.Destroy();
                 storedRock = new AbstractPhysicalObject(self.world, AbstractPhysicalObject.AbstractObjectType.Rock, null, self.Players[0].pos, newID);
                 storedRock.RealizeInRoom();
             }
@@ -104,9 +110,9 @@ namespace CrazyWeaponsPlugin
             return res;
         }
 
-        private static void HitWallPatch(On.FlareBomb.orig_HitWall orig, FlareBomb self)
+        private static bool GrenadeHitPatch(On.FlareBomb.orig_HitSomething orig, FlareBomb self, SharedPhysics.CollisionResult result, bool eu)
         {
-            orig.Invoke(self);
+            bool res = orig.Invoke(self, result, eu);
             if (IsGrenade(self))
             {
                 foreach (AbstractCreature abstractCreature in self.room.abstractRoom.creatures)
@@ -114,10 +120,12 @@ namespace CrazyWeaponsPlugin
                     if (!(abstractCreature.realizedCreature is Player)) { abstractCreature.realizedCreature.Die(); }
                 }
             }
+            return res;
         }
 
         private static void SpearApplyPalettePatch(On.Spear.orig_ApplyPalette orig, Spear self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
         {
+            Debug.Log("ApplyPaletteStart");
             if (IsKill(self))
             {
                 self.color = Color.red;
@@ -132,6 +140,7 @@ namespace CrazyWeaponsPlugin
             {
                 orig.Invoke(self, sLeaser, rCam, palette);
             }
+            Debug.Log("ApplyPaletteEnd");
         }
 
         private static void RockApplyPalettePatch(On.Rock.orig_ApplyPalette orig, Rock self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
@@ -169,6 +178,7 @@ namespace CrazyWeaponsPlugin
 
         public static bool IsKill(Spear spear)
         {
+            Debug.Log("IsKillStart");
             return spear.abstractPhysicalObject.ID.number == 100;
         }
 
