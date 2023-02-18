@@ -8,7 +8,7 @@ using System.Security.Permissions;
 
 namespace CrazyWeaponsPlugin
 {
-    [BepInPlugin("HelloThere.CrazyWeapons", "Crazy Weapons", "1.1")]
+    [BepInPlugin("HelloThere.CrazyWeapons", "Crazy Weapons", "1.2")]
     public class CrazyWeaponsMod : BaseUnityPlugin
     {
         public void OnEnable()
